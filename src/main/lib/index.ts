@@ -123,3 +123,7 @@ export const deleteNote: DeleteNote = async (filename) => {
     await remove(`${rootDir}/${filename}.md`);
     return true;
 };
+
+export const updateMessage: any = (msg) => {
+  console.info(`updateMessage: ${msg}`);
+};

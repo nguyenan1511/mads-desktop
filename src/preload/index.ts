@@ -10,6 +10,7 @@ try {
         createNote: (...args: Parameters<CreateNote>) => ipcRenderer.invoke('createNote', ...args),
         deleteNote: (...args: Parameters<DeleteNote>) => ipcRenderer.invoke('deleteNote', ...args),
         openExternal: (...args: Parameters<OpenExternal>) => ipcRenderer.invoke('openExternal', ...args),
+        updateMessage: (callback) => ipcRenderer.on("updateMessage", callback),
     });
 } catch (error) {
     console.log('🚀error---->', error);

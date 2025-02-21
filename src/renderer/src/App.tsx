@@ -55,6 +55,13 @@ function App() {
         if (_lang) {
             dispatch(routerActions.changeLang(_lang as any));
         }
+
+        if (window.context?.updateMessage) {
+          window.context.updateMessage((_event, message) => {
+            console.log('updateMessage', message)
+          });
+        }
+
     }, []);
 
     useEffect(() => {

@@ -1,4 +1,5 @@
 import { createNote, deleteNote, getNotes, openExternal, readNote, writeNote } from '@/lib';
+import { init } from '@/lib/auto-updater';
 import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import { CreateNote, DeleteNote, GetNotes, OpenExternal, ReadNote, WriteNote } from '@shared/types';
 import { BrowserWindow, app, ipcMain, shell } from 'electron';
@@ -32,6 +33,7 @@ function createWindow(): void {
     mainWindow.on('ready-to-show', () => {
         mainWindow.show();
         mainWindow.webContents.openDevTools();
+        init(mainWindow);
     });
 
     mainWindow.webContents.setWindowOpenHandler((details) => {
@@ -77,6 +79,7 @@ app.whenReady().then(() => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
     });
 });
+
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

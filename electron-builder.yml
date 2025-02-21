@@ -13,6 +13,7 @@ asarUnpack:
     - resources/**
 win:
     executableName: mads-sat
+    artifactName: ${name}-${version}-setup.${ext}
 nsis:
     artifactName: ${name}-${version}-setup.${ext}
     shortcutName: ${productName}
@@ -39,6 +40,10 @@ linux:
 appImage:
     artifactName: ${name}-${version}.${ext}
 npmRebuild: false
+
+# Publish application
 publish:
-    provider: generic
-    url: https://example.com/auto-updates
+  provider: github
+  owner: nguyenan1511
+  repo: mads-desktop
+  releaseType: release
